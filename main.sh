@@ -81,11 +81,11 @@ cleanup() {
 }
 
 auto() {
-    msg 'Updating system'
+    echo 'Updating system'
     update_system
-    msg 'Installing dev tools'
+    echo 'Installing dev tools'
     setup_dev_tools
-    msg 'Cleaning up'
+    echo 'Cleaning up'
     cleanup
 }
 
