@@ -80,27 +80,6 @@ cleanup() {
     sudo apt autoremove -y
 }
 
-main() {
-    while true; do
-        show_menu
-        read -p 'Enter your choice: ' choice
-        case $choice in
-        1)
-            auto
-            msg 'Done!'
-            ask_reboot
-            ;;
-        q)
-            exit 0
-            ;;
-        *)
-            error_msg 'Wrong input!'
-            ;;
-        esac
-    done
-
-}
-
 auto() {
     msg 'Updating system'
     update_system
@@ -110,4 +89,4 @@ auto() {
     cleanup
 }
 
-(return 2> /dev/null) || main
+auto
