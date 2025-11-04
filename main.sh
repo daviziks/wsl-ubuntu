@@ -66,7 +66,10 @@ setup_dev_tools() {
 }
 
 setup_dotfiles() {
-    git clone https://github.com/daviziks/dotfiles.git ~/.dotfiles
+    # Authenticate with GitHub CLI
+    gh auth login
+    # Clone dotfiles using gh cli
+    gh repo clone daviziks/dotfiles ~/.dotfiles
     # Moves the content of the dotfiles folder to the home directory
     cp -r ~/.dotfiles/. ~/
     # Removes the dotfiles folder
