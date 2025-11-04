@@ -69,7 +69,7 @@ setup_dotfiles() {
     # Authenticate with GitHub CLI
     gh auth login
     # Clone dotfiles using gh cli
-    gh repo clone dotfiles ~/.dotfiles
+    gh repo clone daviziks/dotfiles ~/.dotfiles
     # Moves the content of the dotfiles folder to the home directory
     cp -r ~/.dotfiles/. ~/
     # Removes the dotfiles folder
