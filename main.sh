@@ -56,6 +56,9 @@ setup_dev_tools() {
     sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     sudo usermod -aG docker "$USER"
 
+	# lazydocker
+	curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+
     # fish
     sudo apt-add-repository ppa:fish-shell/release-4
     sudo apt update
