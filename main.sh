@@ -6,22 +6,6 @@ setup_dev_tools() {
     # deps
     sudo apt install -y git curl wget unzip build-essential
 
-    # starship
-    curl -sS https://starship.rs/install.sh | sh
-
-    # eza (ls alternative)
-    sudo mkdir -p /etc/apt/keyrings
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-    sudo apt update
-    sudo apt install -y eza
-
-    # bat
-    sudo apt install -y bat
-    mkdir -p ~/.local/bin
-    ln -s /usr/bin/batcat ~/.local/bin/bat
-
     # mise
     curl https://mise.run | sh
     echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
@@ -59,27 +43,7 @@ setup_dev_tools() {
 	# lazydocker
 	curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
-    # fish
-    sudo apt-add-repository ppa:fish-shell/release-4
-    sudo apt update
-    sudo apt install -y fish
-
-    # dotfiles
-    setup_dotfiles
-}
-
-setup_dotfiles() {
-    # Authenticate with GitHub CLI
-    gh auth login
-    # Clone dotfiles using gh cli
-    gh repo clone daviziks/dotfiles ~/.dotfiles
-    # Moves the content of the dotfiles folder to the home directory
-    cp -r ~/.dotfiles/. ~/
-    # Removes the dotfiles folder
-    rm -rf ~/.dotfiles
-    rm -rf ~/.git
-    rm -rf ~/.config/hypr
-    rm -rf ~/.config/Cursor
+	gh auth login
 }
 
 cleanup() {
